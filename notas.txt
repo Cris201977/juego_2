@@ -1,0 +1,3 @@
+escuchar botones dentro de la funcion cuentaRegresiva
+poner múscica
+sonido al reloj con un tic en el bucle
