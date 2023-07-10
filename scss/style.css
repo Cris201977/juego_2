@@ -60,6 +60,10 @@ img {
   height: 100%;
 }
 
-#f, #v, #f_ {
+#f, #v, #f- {
   cursor: pointer;
+}
+
+#v {
+  color: green;
 }/*# sourceMappingURL=style.css.map */

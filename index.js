@@ -3,24 +3,27 @@
 let timer = 0;
 let contador = 0;
 let max = 3;
-
+let tiempo =20;
 iniciar();
 
 
 function iniciar(){
+    timer += tiempo;
     let play = document.querySelector("#play");
     play.addEventListener("click", jugar);
-    timer += 20;
+    play.disabled = false;
     document.getElementById('cuenta').innerHTML = "Reloj: " + timer;
     $('.card').load("./preguntas/inicio.txt");
 
 }
 function jugar(){
+
     contador = elegirPregunta();
     $('.card').load("./preguntas/cargando.txt");
     setTimeout(() => {
        cuentaRegresiva();
        darOpciones();
+
     }, "3000");
 }
 
@@ -49,26 +52,25 @@ function limpiarRespuestas(){
 }
 
 function darOpciones(){
+    play.disabled = true;
     if(timer !=0){
     $('.card').load("./preguntas/p_" + contador + ".txt");
     $('.resp_1').load("./respuestas/r_" + contador + "/r_1.txt");
     $('.resp_2').load("./respuestas/r_" + contador + "/r_2.txt");
     $('.resp_3').load("./respuestas/r_" + contador + "/r_3.txt");
+
+
     responder();
 
     }
 }
 function responder(){
-    let juego = document.querySelector("#juego");
-    juego.addEventListener("click", r);
 
-    function r() {
-        alert("HOOOOO");
-    }
-    let ganador = document.querySelector("#v");
+    let ganador = document.getElementById("#v");
+    let perdedor1 = document.getElementById("#f");
+    let perdedor2 = document.getElementById("#f-");
+
     ganador.addEventListener("click", ganar);
-    let perdedor1 = document.querySelector("#f");
-    let perdedor2 = document.querySelector("#f_");
     perdedor1.addEventListener("click", perder);
     perdedor2.addEventListener("click", perder);
 
@@ -81,4 +83,6 @@ function responder(){
         timer == 0;
     }
 }
+
+
 
